@@ -1,0 +1,25 @@
+# Tender Section Extractor — runtime + dev dependencies (Python 3.11+)
+
+# Core
+pydantic>=2.7,<3
+pydantic-settings>=2.3,<3
+pyyaml>=6.0
+pymupdf>=1.24
+rapidfuzz>=3.9
+
+# LLM (judge only; tests use FakeLLMClient)
+anthropic>=0.40
+
+# UI
+streamlit>=1.38
+pillow>=10.0
+
+# Env loading (.env)
+python-dotenv>=1.0
+
+# Dev
+pytest>=8.0
+ruff>=0.6
+
+# Optional OCR (milestone 7, off by default) — uncomment when needed
+# pytesseract>=0.3.10

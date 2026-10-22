@@ -1,0 +1,165 @@
+{
+  "_comment": "Ground truth for tests/fixtures/nrl_pur1011567.pdf (NRL tender PUR1011567, 67 pages, digital text layer, no PDF bookmarks). Pages are 1-based PHYSICAL page indices; printed 'Page X of 67' matches physical here (offset 0). Verified by hand against the PDF on 2026-10-15. Do NOT edit to make a test pass.",
+
+  "document": {
+    "pages": 67,
+    "printed_page_offset": 0,
+    "has_bookmarks": false,
+    "needs_ocr_pages": []
+  },
+
+  "targets": {
+    "_comment": "The five labels the business asked for. This is a GeM supply tender: SOR, SCC and Technical Specifications are Annexures 19/20/21 and are listed on p15 under 'Annexures Not Applicable for this Tender'. They are absent from the body, so they resolve to null with status not_applicable - that is the correct answer, not a failure, and must not trigger the LLM fallback.",
+    "pqc":       [5, 6],
+    "atc":       [7, 13],
+    "scc":       null,
+    "sor":       null,
+    "tech_spec": null
+  },
+  "targets_status": {
+    "pqc": "found", "atc": "found", "scc": "not_applicable", "sor": "not_applicable", "tech_spec": "not_applicable"
+  },
+
+  "_flat_comment": "Two views of the same tree. flat_inclusive: a parent's range covers its children (D = 14-67, Annexure 2 = 18-23). flat_exclusive: a parent's range stops where its first child starts (D = 14-15, Annexure 2 = 18-18). Leaves are identical in both. The pipeline must emit both; tests compare both.",
+
+  "flat_inclusive": {
+    "checklist":      [3, 4],
+    "pqc":            [5, 6],
+    "atc":            [7, 13],
+    "annexure_list":  [14, 67],
+
+    "annexure_1":     [16, 17],
+    "annexure_2":     [18, 23],
+    "annexure_2_1":   [19, 19],
+    "annexure_2_2":   [20, 20],
+    "annexure_2_3":   [21, 21],
+    "annexure_2_6":   [22, 23],
+    "annexure_2_6_1": [23, 23],
+    "annexure_3":     [24, 28],
+    "annexure_3_2":   [28, 28],
+    "annexure_6":     [29, 31],
+    "annexure_6_1":   [31, 31],
+    "annexure_7_2":   [32, 34],
+    "annexure_7_2_1": [34, 34],
+    "annexure_8":     [35, 35],
+    "annexure_9":     [36, 36],
+    "annexure_10":    [37, 37],
+    "annexure_11":    [38, 38],
+    "annexure_12":    [39, 40],
+    "annexure_14":    [41, 42],
+    "annexure_14_1":  [42, 42],
+    "annexure_15":    [43, 47],
+    "annexure_15_2":  [45, 46],
+    "annexure_15_4":  [47, 47],
+    "annexure_16":    [48, 51],
+    "annexure_16_2":  [49, 51],
+    "annexure_18":    [52, 67]
+  },
+
+  "flat_exclusive": {
+    "checklist":      [3, 4],
+    "pqc":            [5, 6],
+    "atc":            [7, 13],
+    "annexure_list":  [14, 15],
+
+    "annexure_1":     [16, 17],
+    "annexure_2":     [18, 18],
+    "annexure_2_1":   [19, 19],
+    "annexure_2_2":   [20, 20],
+    "annexure_2_3":   [21, 21],
+    "annexure_2_6":   [22, 22],
+    "annexure_2_6_1": [23, 23],
+    "annexure_3":     [24, 27],
+    "annexure_3_2":   [28, 28],
+    "annexure_6":     [29, 30],
+    "annexure_6_1":   [31, 31],
+    "annexure_7_2":   [32, 33],
+    "annexure_7_2_1": [34, 34],
+    "annexure_8":     [35, 35],
+    "annexure_9":     [36, 36],
+    "annexure_10":    [37, 37],
+    "annexure_11":    [38, 38],
+    "annexure_12":    [39, 40],
+    "annexure_14":    [41, 41],
+    "annexure_14_1":  [42, 42],
+    "annexure_15":    [43, 44],
+    "annexure_15_2":  [45, 46],
+    "annexure_15_4":  [47, 47],
+    "annexure_16":    [48, 48],
+    "annexure_16_2":  [49, 51],
+    "annexure_18":    [52, 67]
+  },
+
+  "tree_levels": {
+    "_comment": "level = 2 + number of dots in the annexure id. Every annexure is a descendant of D. Annexure 7.2 / 7.2.1 have no 'Annexure 7' parent (7.1 is Not Applicable and 7 is not listed): they keep their nominal levels 3 / 4 and attach to D directly. This is normal tender numbering, not an error.",
+    "A": 1, "B": 1, "C": 1, "D": 1,
+    "annexure_1": 2, "annexure_2": 2, "annexure_2_1": 3, "annexure_2_2": 3, "annexure_2_3": 3,
+    "annexure_2_6": 3, "annexure_2_6_1": 4, "annexure_3": 2, "annexure_3_2": 3, "annexure_6": 2,
+    "annexure_6_1": 3, "annexure_7_2": 3, "annexure_7_2_1": 4, "annexure_8": 2, "annexure_9": 2,
+    "annexure_10": 2, "annexure_11": 2, "annexure_12": 2, "annexure_14": 2, "annexure_14_1": 3,
+    "annexure_15": 2, "annexure_15_2": 3, "annexure_15_4": 3, "annexure_16": 2, "annexure_16_2": 3,
+    "annexure_18": 2
+  },
+
+  "level1_titles": {
+    "checklist": "A. CHECKLIST FOR DOCUMENT SUBMISSION WITH UNPRICED OFFER",
+    "pqc":       "B. PRE-QUALIFICATION CRITERIA (PQC)",
+    "atc":       "C. AGREED TERMS AND CONDITIONS (ATC)",
+    "annexure_list": "D. TENDER ANNEXURES"
+  },
+
+  "annexures_intro_pages": [14, 15],
+  "unassigned_pages": [1, 2],
+
+  "expected_annexure_ids": [
+    "1", "2", "2.1", "2.2", "2.3", "2.6", "2.6.1", "3", "3.2", "6", "6.1",
+    "7.2", "7.2.1", "8", "9", "10", "11", "12", "14", "14.1", "15", "15.2",
+    "15.4", "16", "16.2", "18"
+  ],
+
+  "not_applicable_annexure_ids": [
+    "2.4", "2.5", "3.1", "4", "4.1", "4.2", "4.3", "4.4", "5", "5.1", "5.2",
+    "7.1", "13", "15.1", "15.3", "15.5", "15.6", "16.1", "17", "19", "20", "21"
+  ],
+
+  "index_pages": [2, 14, 15],
+
+  "boilerplate_lines_expected": [
+    "NRL Tender Ref. No: PUR1011567",
+    "Signed & Sealed by Authorised Signatory of bidder",
+    "Job Name",
+    "Supply of FLP Lights, Fans & plug tops at NRL Site for RTA'27",
+    "NRL Tender No.:",
+    "PUR1011567",
+    "Sys. Gen."
+  ],
+
+  "traps": {
+    "_comment": "Lines that look like headings but must NOT become level-1 or level-2 sections. Used by test_scoring.py. 'page' is physical page.",
+    "must_reject_or_demote": [
+      {"page": 2,  "text": "B Pre-Qualifying Criteria", "why": "contents table row"},
+      {"page": 3,  "text": "Annexure 8", "why": "bold cell inside checklist table"},
+      {"page": 3,  "text": "Annexure 5", "why": "bold cell inside checklist table"},
+      {"page": 4,  "text": "Annexure 7.2 &", "why": "checklist table cell, trailing ampersand"},
+      {"page": 12, "text": "Annexure-14.1 on Bidder's Letterhead in lieu of Earnest Money Deposit (EMD).", "why": "cross-reference sentence with hyphen form"},
+      {"page": 14, "text": "Annexure 1", "why": "row in annexure list table"},
+      {"page": 14, "text": "Annexure 4", "why": "row in Not Applicable table"},
+      {"page": 15, "text": "Annexure 21", "why": "row in Not Applicable table"},
+      {"page": 17, "text": "Information for transporter / goods carrier", "why": "12pt bold unnumbered title; continuation of Annexure 1, not a new annexure"},
+      {"page": 17, "text": "A. Vehicles without the following valid documents (for vehicle and driver) shall not be allowed", "why": "letter-pattern sentence inside annexure body"},
+      {"page": 25, "text": "D. Benefits Under The Public Procurement Policy for Micro and Small Enterprises (MSEs) Order", "why": "sub-heading inside Annexure 3; letter D already used at level 1"},
+      {"page": 27, "text": "F. Applicability of the Policy", "why": "sub-heading inside Annexure 3"},
+      {"page": 59, "text": "22 Acceptance of bid & Acknowledgement of Order:", "why": "GPC clause row inside Annexure 18 table"},
+      {"page": 60, "text": "29(A) Contract Performance Security (CPS):", "why": "GPC clause row inside Annexure 18 table"},
+      {"page": 64, "text": "35 (A) Governing Law:", "why": "GPC clause row inside Annexure 18 table"}
+    ],
+    "must_accept": [
+      {"page": 3,  "text": "A. CHECKLIST FOR DOCUMENT SUBMISSION WITH UNPRICED OFFER", "level": 1},
+      {"page": 5,  "text": "B. PRE-QUALIFICATION CRITERIA (PQC)", "level": 1},
+      {"page": 7,  "text": "C. AGREED TERMS AND CONDITIONS (ATC)", "level": 1},
+      {"page": 14, "text": "D. TENDER ANNEXURES", "level": 1, "why": "real banner heading on an index page; must not get the index penalty"},
+      {"page": 16, "text": "Annexure 1", "level": 2, "why": "first non-boilerplate line only after Job Name/Tender No lines are stripped"},
+      {"page": 52, "text": "Annexure 18", "level": 2, "why": "topmost by y but NOT first in PyMuPDF block order; requires y-sort"}
+    ]
+  }
+}

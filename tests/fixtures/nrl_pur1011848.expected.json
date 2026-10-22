@@ -1,0 +1,190 @@
+{
+  "_comment": "Ground truth for tests/fixtures/nrl_pur1011848.pdf (NRL works tender PUR1011848 'Piping and other ancillary work of EBMS blending system', 85 pages, digital text layer, no PDF bookmarks, pages 84-85 are drawings with no text apart from the footer). Pages are 1-based PHYSICAL; printed 'Tender: PUR1011848 Page X of 85' matches physical (offset 0). Note the SOR annexure carries its OWN 'SOR Page X of 10' footer on pages 59-68 - the printed-page detector must ignore it (its N != document page count). Verified by hand against the PDF on 2026-10-15. Do NOT edit to make a test pass.",
+
+  "document": {
+    "pages": 85,
+    "printed_page_offset": 0,
+    "has_bookmarks": false,
+    "image_only_pages": [84, 85],
+    "needs_ocr_pages": []
+  },
+
+  "targets": {
+    "_comment": "The five labels the business asked for. Resolved to the SHALLOWEST section whose title or index description maps to the label. SCC/SOR/Tech Specs are annexures 20/19/21 here, not top-level sections. Deeper matches ('2. Technical Specification:' on p83, '18. Schedule of Rates' on p74, both inside annexures) must NOT win.",
+    "pqc":       [11, 13],
+    "atc":       [15, 16],
+    "scc":       [69, 78],
+    "sor":       [58, 68],
+    "tech_spec": [79, 85]
+  },
+  "targets_status": {
+    "pqc": "found", "atc": "found", "scc": "found", "sor": "found", "tech_spec": "found"
+  },
+
+  "_flat_comment": "flat_inclusive: parent range covers children. flat_exclusive: parent stops before its first child. Leaves identical.",
+
+  "flat_inclusive": {
+    "nit":            [2, 10],
+    "pqc":            [11, 13],
+    "brc":            [14, 14],
+    "atc":            [15, 16],
+    "annexure_list":  [17, 85],
+
+    "annexure_1":     [19, 20],
+    "annexure_1_1":   [20, 20],
+    "annexure_2":     [21, 28],
+    "annexure_2_1":   [22, 22],
+    "annexure_2_2":   [23, 23],
+    "annexure_2_3":   [24, 24],
+    "annexure_2_4":   [25, 25],
+    "annexure_2_5":   [26, 26],
+    "annexure_2_6":   [27, 28],
+    "annexure_2_6_1": [28, 28],
+    "annexure_3":     [29, 32],
+    "annexure_6":     [33, 35],
+    "annexure_6_1":   [35, 35],
+    "annexure_7_2":   [36, 39],
+    "annexure_7_2_1": [39, 39],
+    "annexure_8":     [40, 40],
+    "annexure_9":     [41, 41],
+    "annexure_10":    [42, 42],
+    "annexure_11":    [43, 43],
+    "annexure_12":    [44, 45],
+    "annexure_13":    [46, 46],
+    "annexure_14":    [47, 49],
+    "annexure_14_1":  [49, 49],
+    "annexure_15":    [50, 54],
+    "annexure_15_2":  [52, 53],
+    "annexure_15_3":  [54, 54],
+    "annexure_16":    [55, 57],
+    "annexure_16_2":  [56, 57],
+    "annexure_19":    [58, 68],
+    "annexure_20":    [69, 78],
+    "annexure_21":    [79, 85]
+  },
+
+  "flat_exclusive": {
+    "nit":            [2, 10],
+    "pqc":            [11, 13],
+    "brc":            [14, 14],
+    "atc":            [15, 16],
+    "annexure_list":  [17, 18],
+
+    "annexure_1":     [19, 19],
+    "annexure_1_1":   [20, 20],
+    "annexure_2":     [21, 21],
+    "annexure_2_1":   [22, 22],
+    "annexure_2_2":   [23, 23],
+    "annexure_2_3":   [24, 24],
+    "annexure_2_4":   [25, 25],
+    "annexure_2_5":   [26, 26],
+    "annexure_2_6":   [27, 27],
+    "annexure_2_6_1": [28, 28],
+    "annexure_3":     [29, 32],
+    "annexure_6":     [33, 34],
+    "annexure_6_1":   [35, 35],
+    "annexure_7_2":   [36, 38],
+    "annexure_7_2_1": [39, 39],
+    "annexure_8":     [40, 40],
+    "annexure_9":     [41, 41],
+    "annexure_10":    [42, 42],
+    "annexure_11":    [43, 43],
+    "annexure_12":    [44, 45],
+    "annexure_13":    [46, 46],
+    "annexure_14":    [47, 48],
+    "annexure_14_1":  [49, 49],
+    "annexure_15":    [50, 51],
+    "annexure_15_2":  [52, 53],
+    "annexure_15_3":  [54, 54],
+    "annexure_16":    [55, 55],
+    "annexure_16_2":  [56, 57],
+    "annexure_19":    [58, 68],
+    "annexure_20":    [69, 78],
+    "annexure_21":    [79, 85]
+  },
+
+  "tree_levels": {
+    "_comment": "Level-1 headings here have NO letter prefix - they are recognised through the label vocabulary ('titled' kind). Annexures nest under annexure_list. Annexure 7.2/7.2.1 are orphans (no Annexure 7) and keep nominal levels 3/4.",
+    "nit": 1, "pqc": 1, "brc": 1, "atc": 1, "annexure_list": 1,
+    "annexure_1": 2, "annexure_1_1": 3, "annexure_2": 2, "annexure_2_1": 3, "annexure_2_2": 3,
+    "annexure_2_3": 3, "annexure_2_4": 3, "annexure_2_5": 3, "annexure_2_6": 3, "annexure_2_6_1": 4,
+    "annexure_3": 2, "annexure_6": 2, "annexure_6_1": 3, "annexure_7_2": 3, "annexure_7_2_1": 4,
+    "annexure_8": 2, "annexure_9": 2, "annexure_10": 2, "annexure_11": 2, "annexure_12": 2,
+    "annexure_13": 2, "annexure_14": 2, "annexure_14_1": 3, "annexure_15": 2, "annexure_15_2": 3,
+    "annexure_15_3": 3, "annexure_16": 2, "annexure_16_2": 3, "annexure_19": 2, "annexure_20": 2,
+    "annexure_21": 2
+  },
+
+  "level1_titles": {
+    "nit":           "NOTICE INVITING TENDER",
+    "pqc":           "PRE-QUALIFICATION CRITERIA (PQC)",
+    "brc":           "BID REJECTION CRITERIA",
+    "atc":           "AGREED TERMS & CONDITIONS (ATC)",
+    "annexure_list": "LIST OF ANNEXURES"
+  },
+
+  "annexure_titles_from_body": {
+    "_comment": "For a bare 'Annexure N' line the title is the largest emphasized line group below it on the same page. Note the typo in the source on p69.",
+    "annexure_1":  "Instructions To Bidders In Brief",
+    "annexure_19": "SCHEDULE OF RATES",
+    "annexure_20": "SPECIAL CONDTIONS OF CONTRACT",
+    "annexure_21": "TECHNICAL SPECIFICATIONS"
+  },
+
+  "unassigned_pages": [1],
+  "index_pages": [17, 18],
+
+  "expected_annexure_ids": [
+    "1", "1.1", "2", "2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.6.1", "3", "6", "6.1",
+    "7.2", "7.2.1", "8", "9", "10", "11", "12", "13", "14", "14.1", "15", "15.2", "15.3",
+    "16", "16.2", "17", "19", "20", "21"
+  ],
+  "expected_but_missing": ["17"],
+  "_missing_comment": "Annexure 17 is listed as applicable on p17 with an EMPTY description and never appears in the body. This must produce a warning but must NOT trigger the whole-document LLM fallback (one missing non-target id with no description = informational).",
+
+  "not_applicable_annexure_ids": [
+    "3.1", "3.2", "4", "4.1", "4.2", "4.3", "4.4", "5", "5.1", "5.2", "5.3", "5.4",
+    "7.1", "15.1", "15.4", "15.5", "15.6", "16.1", "18"
+  ],
+
+  "boilerplate_lines_expected": [
+    "Job Name",
+    "Piping and other ancillary work of EBMS blending system in Numaligarh Refinery Marketing",
+    "Terminal (NRMT)",
+    "PUR1011848",
+    "Sys. Gen.",
+    "SPECIAL CONDITIONS OF CONTRACT",
+    "Technical Tender Document",
+    "NUMALIGARH REFINERY LTD."
+  ],
+  "_boilerplate_comment": "'SPECIAL CONDITIONS OF CONTRACT' is a running header on pp71-78 (11pt bold, y~0.04) and 'Technical Tender Document' on pp80-83. Both match the label vocabulary and must still be stripped (vocabulary matches are NOT exempt from boilerplate; only letter/named structural headings are). The section starts are the 'Annexure 20' / 'Annexure 21' lines on pp69/79, so stripping loses nothing here.",
+
+  "traps": {
+    "must_reject_or_demote": [
+      {"page": 1,  "text": "PART–I: UNPRICED BID", "why": "cover-page label; 'named' kind with roman id, not first on page"},
+      {"page": 4,  "text": "8. Scope of work and Supply:", "why": "numeric clause inside NIT; level >= 3; must not become the scope section"},
+      {"page": 11, "text": "PRE-QUALIFICATION CRITERIA (PQC)", "y_hint": 0.19, "why": "second copy of the heading on the same page; duplicate of accepted heading at y~0.12"},
+      {"page": 14, "text": "Schedule of Rates / Price Schedule / Price Basis", "why": "list item inside BRC; must not resolve the sor target"},
+      {"page": 17, "text": "Annexure 19", "why": "row in annexure list table"},
+      {"page": 18, "text": "Annexure 18", "why": "row in Not Applicable table"},
+      {"page": 29, "text": "SPECIAL CONDITIONS FOR MICRO AND SMALL ENTERPRISES (MSEs) BIDDERS :", "why": "sub-heading inside Annexure 3; must NOT map to scc (needs 'contract' or 'SCC' token)"},
+      {"page": 31, "text": "E. Relaxation of Past Tract Record (PTR) for MSEs and Start ups", "why": "letter sub-heading inside Annexure 3"},
+      {"page": 59, "text": "SCHEDULE OF RATES", "why": "repeat of Annexure 19's title on its second page (repeat_title penalty)"},
+      {"page": 70, "text": "Special Conditions of Contract", "why": "repeat of Annexure 20's title on its cover page (repeat_title penalty)"},
+      {"page": 72, "text": "4. Scope of Work", "why": "numeric clause inside SCC"},
+      {"page": 74, "text": "18. Schedule of Rates", "why": "numeric clause inside SCC; must not resolve the sor target"},
+      {"page": 83, "text": "2. Technical Specification:", "why": "numeric clause inside Annexure 21; must not resolve the tech_spec target"}
+    ],
+    "must_accept": [
+      {"page": 2,  "text": "NOTICE INVITING TENDER", "level": 1, "why": "no letter prefix, 10pt bold caps, first on page; recognised via vocabulary"},
+      {"page": 11, "text": "PRE-QUALIFICATION CRITERIA (PQC)", "level": 1},
+      {"page": 14, "text": "BID REJECTION CRITERIA", "level": 1},
+      {"page": 15, "text": "AGREED TERMS & CONDITIONS (ATC)", "level": 1},
+      {"page": 17, "text": "LIST OF ANNEXURES", "level": 1, "why": "index page title above the table"},
+      {"page": 19, "text": "Annexure 1", "level": 2, "title": "Instructions To Bidders In Brief"},
+      {"page": 58, "text": "Annexure 19", "level": 2, "title": "SCHEDULE OF RATES", "why": "title is a 36pt line far below the 14pt id line"},
+      {"page": 69, "text": "Annexure 20", "level": 2, "title": "SPECIAL CONDTIONS OF CONTRACT", "why": "title wraps over two 36pt lines and contains a typo; fuzzy label match must still give scc"},
+      {"page": 79, "text": "Annexure 21", "level": 2, "title": "TECHNICAL SPECIFICATIONS", "why": "pages 84-85 are image-only drawings and must fall inside this range without OCR"}
+    ]
+  }
+}

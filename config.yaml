@@ -1,0 +1,221 @@
+# Defaults for every tunable; each is documented in src/tender_sections/config.py.
+# A test keeps this file equal to the code defaults.
+# Environment variables override this file: TENDER_<SECTION>__<KEY>, e.g. TENDER_BOILERPLATE__MIN_PAGES=4
+
+ingest:
+  merge_baseline_ratio: 0.3
+  max_line_slope: 0.05
+  caps_min_letters: 4
+  font_size_bucket: 0.5
+  default_body_font_size: 10.0
+  body_font_min_chars: 200
+  detect_tables: true
+  min_table_rows: 2
+  printed_number_top_band: 0.1
+  printed_number_bottom_band: 0.9
+  printed_page_of_n: Page\s+(\d+)\s+of\s+(\d+)
+  printed_page_bare: -?\s*(\d{1,4})\s*-?
+  printed_offset_min_agreement: 0.8
+
+boilerplate:
+  top_band: 0.12
+  bottom_band: 0.9
+  min_pages: 3
+  page_number_patterns:
+  - \bPage\s+\d+\s+of\s+\d+\b
+  - ^\d{1,4}$
+  - ^-\s*\d+\s*-$
+  - Sys\.\s*Gen\.
+
+text_layer:
+  min_chars: 20
+  min_vector_paths: 50
+
+ocr:
+  enabled: false
+  engine: tesseract
+  dpi: 300
+  languages: eng
+  min_word_confidence: 60.0
+
+patterns:
+  letter: ^([A-Z])[.)]\s+(.{3,120})$
+  named: ^(?i:(annexure|appendix|schedule|section|part|chapter|form|format|exhibit))\s*[-–:]?\s*([IVXLC]+|\d+(?:\.\d+)*[A-Za-z]?)\b[\s:–-]*(.*)$
+  numeric: ^(\d+(?:\.\d+)*)[.)]?\s*(\(?[A-Z]\)?)?\s+(.{3,120})$
+  list_item: ^\(?(?:[a-z]|[ivx]{1,4})[.)]\s
+
+index:
+  min_entries: 5
+  min_entries_with_title: 4
+  max_description_chars: 100
+  line_max_chars: 60
+  line_edge_tolerance: 0.03
+  title_pattern: (?i)(?:table of contents|contents|index|list of annexures?|annexures? lists?)\s*:?
+  not_applicable_pattern: (?i)\bnot\s+applicable\b
+  external_pattern: (?i)\b(?:website|link|available at|refer .* portal|separately|to be downloaded)\b
+  empty_description_pattern: (?i)none|nil|n/?a|-+|—
+  serial_cell_pattern: \d{1,3}[.)]?
+
+candidates:
+  titled_max_chars: 90
+  titled_max_words: 10
+  layout_only_max_chars: 90
+  layout_only_font_delta: 1.5
+  layout_only_bold_ratio: 0.6
+  title_below_max_y: 0.5
+  title_below_font_delta: 1.5
+  title_below_bold_ratio: 0.5
+  title_below_size_tolerance: 0.5
+
+scoring:
+  first_on_page: 3
+  top_of_page: 1
+  top_of_page_y: 0.25
+  emphasis: 3
+  emphasis_bold_ratio: 0.5
+  emphasis_font_delta: 1.5
+  emphasis_caps_ratio: 0.7
+  pattern_letter_caps: 3
+  pattern_letter_title_case: 2
+  pattern_letter_other: 1
+  pattern_named: 3
+  pattern_titled: 3
+  pattern_numeric: 1
+  pattern_layout_only: 0
+  title_caps_ratio: 0.7
+  title_case_ratio: 0.6
+  listed: 1
+  in_table_or_index: -5
+  sentence_like: -5
+  sentence_max_chars: 90
+  sentence_max_words: 12
+  sentence_caps_ratio: 0.5
+  sentence_endings:
+  - ','
+  - ;
+  - '&'
+  sentence_end_words:
+  - and
+  - or
+  letter_reuse: -4
+  unlisted_letter: -5
+  repeat_title: -5
+  repeat_window_pages: 2
+  max_score: 10
+  accept_at: 8
+  reject_at: 3
+
+labels:
+  fuzzy_threshold: 90
+  vocabulary:
+    nit:
+    - notice inviting tender
+    - NIT
+    pqc:
+    - pre-qualification criteria
+    - prequalification criteria
+    - PQC
+    - eligibility criteria
+    - qualifying requirements
+    - bidder qualification criteria
+    - BQC
+    brc:
+    - bid rejection criteria
+    - BRC
+    atc:
+    - agreed terms and conditions
+    - ATC
+    scc:
+    - special conditions + contract|SCC
+    - special purchase conditions
+    - SPC
+    sor:
+    - schedule of rates
+    - SOR
+    - price schedule
+    - price bid
+    - bill of quantities
+    - BOQ
+    tech_spec:
+    - technical + specification
+    - tech spec
+    - technical requirements
+    - particular specifications
+    gcc:
+    - general conditions of contract
+    - GCC
+    - general purchase conditions
+    - GPC
+    itb:
+    - instructions to bidders
+    - ITB
+    - instructions to tenderers
+    checklist:
+    - checklist
+    - check list
+    annexure_list:
+    - list of annexures
+    - annexure lists
+    - tender annexures
+    - =annexures
+    scope:
+    - scope of work
+    - scope of supply
+    - SOW
+    bank_guarantee:
+    - bank guarantee
+    - surety bond
+    - performance security
+    - EMD
+    declarations:
+    - declaration
+    - undertaking
+    - affidavit
+    - integrity pact
+    - code of integrity
+  target_labels:
+  - pqc
+  - atc
+  - scc
+  - sor
+  - tech_spec
+
+levels:
+  level1_labels:
+  - nit
+  - pqc
+  - brc
+  - atc
+  - annexure_list
+  - itb
+  - gcc
+  - scc
+  - sor
+  - tech_spec
+  - scope
+  - checklist
+  level1_keywords:
+  - section
+  - part
+  - chapter
+  max_emit_level: 4
+  emit_numeric_clauses: false
+  layout_font_step: 2.0
+
+checks:
+  suspicious_length_ratio: 0.4
+  expected_missing_trigger: 2
+
+llm:
+  enabled: true
+  model: null
+  default_model: claude-sonnet-5-5
+  effort: low
+  whole_doc_effort: medium
+  max_tokens: 16000
+  max_candidates_per_call: 40
+  digest_chars: 400
+  whole_doc_page_chars: 300
+  confidence_cap: 0.85
+  fallbacks: default
+  timeout_seconds: 120.0

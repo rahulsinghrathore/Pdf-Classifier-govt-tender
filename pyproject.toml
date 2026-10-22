@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tender-sections"
+version = "0.1.0"
+description = "Find the page ranges of business-defined sections in government tender PDFs."
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.7,<3",
+    "pydantic-settings>=2.3,<3",
+    "pyyaml>=6.0",
+    "pymupdf>=1.24",
+    "rapidfuzz>=3.9",
+    "anthropic>=0.40",
+    "streamlit>=1.38",
+    "pillow>=10.0",
+    "python-dotenv>=1.0",
+]
+
+[project.scripts]
+tender-sections = "tender_sections.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+ocr = ["pytesseract>=0.3.10"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tender_sections"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]
+addopts = "-ra"
+# PyMuPDF's SWIG bindings warn on import under Python 3.12+.
+filterwarnings = ["ignore:builtin type (SwigPy|swigvarlink):DeprecationWarning"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+# Markdown stays as written: ruff would reformat the Python blocks in docs/SPEC.md.
+extend-exclude = ["*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+# E501: the formatter owns line length. RUF001-003: en dashes are real tender text ("PART–I").
+ignore = ["E501", "RUF001", "RUF002", "RUF003"]
